@@ -292,7 +292,192 @@ function leaveRoom(){
   document.querySelector(".rooms").style.display="grid";
   document.querySelector(".tabs").style.display="flex";
 }
-</script>
+</script>/* ===== CHAT ROOM ===== */
+
+let chatMessages = [];
+
+function openChatRoom() {
+    const room = document.getElementById("liveBox");
+    if (!room) return;
+
+    room.style.display = "block";
+
+    let chatBox = document.getElementById("chatRoomBox");
+
+    if (!chatBox) {
+        chatBox = document.createElement("div");
+        chatBox.id = "chatRoomBox";
+
+        chatBox.innerHTML = `
+            <div style="
+                background:#111322;
+                border-radius:20px;
+                padding:15px;
+                margin:15px 0;
+                box-shadow:0 0 15px rgba(200,0,255,.25);
+            ">
+                <h2 style="text-align:center;margin:5px 0 15px;">
+                    💬 Chat Room
+                </h2>
+
+                <div id="chatMessages" style="
+                    height:300px;
+                    overflow-y:auto;
+                    background:#080711;
+                    border-radius:15px;
+                    padding:12px;
+                    margin-bottom:12px;
+                "></div>
+
+                <div style="
+                    display:flex;
+                    gap:8px;
+                ">
+                    <input id="chatInput"
+                        type="text"
+                        placeholder="Type a message..."
+                        style="
+                            flex:1;
+                            padding:14px;
+                            border:0;
+                            outline:0;
+                            border-radius:25px;
+                            background:#202337;
+                            color:white;
+                            font-size:16px;
+                        ">
+
+                    <button onclick="sendChatMessage()" style="
+                        border:0;
+                        border-radius:25px;
+                        padding:0 20px;
+                        background:linear-gradient(90deg,#b000ff,#ff00a8);
+                        color:white;
+                        font-size:16px;
+                        font-weight:bold;
+                    ">
+                        Send
+                    </button>
+                </div>
+
+                <button onclick="clearChatMessages()" style="
+                    width:100%;
+                    margin-top:10px;
+                    padding:10px;
+                    border:0;
+                    border-radius:20px;
+                    background:#292c3d;
+                    color:white;
+                ">
+                    🗑 Clear Chat
+                </button>
+            </div>
+        `;
+
+        room.appendChild(chatBox);
+
+        document.getElementById("chatInput").addEventListener(
+            "keydown",
+            function(e) {
+                if (e.key === "Enter") {
+                    sendChatMessage();
+                }
+            }
+        );
+    }
+}
+
+function sendChatMessage() {
+    const input = document.getElementById("chatInput");
+    const messages = document.getElementById("chatMessages");
+
+    if (!input || !messages) return;
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    const message = {
+        text: text,
+        time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        })
+    };
+
+    chatMessages.push(message);
+
+    const item = document.createElement("div");
+
+    item.style.cssText = `
+        background:#191b2c;
+        padding:10px 12px;
+        margin-bottom:8px;
+        border-radius:15px;
+        word-break:break-word;
+    `;
+
+    item.innerHTML = `
+        <div style="
+            color:#e100ff;
+            font-weight:bold;
+            margin-bottom:3px;
+        ">
+            👤 You
+        </div>
+
+        <div style="color:white;">
+            ${escapeChatText(message.text)}
+        </div>
+
+        <small style="
+            color:#888;
+            display:block;
+            text-align:right;
+            margin-top:4px;
+        ">
+            ${message.time}
+        </small>
+    `;
+
+    messages.appendChild(item);
+
+    messages.scrollTop = messages.scrollHeight;
+
+    input.value = "";
+    input.focus();
+}
+
+function clearChatMessages() {
+    chatMessages = [];
+
+    const messages = document.getElementById("chatMessages");
+
+    if (messages) {
+        messages.innerHTML = "";
+    }
+}
+
+function escapeChatText(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+/* Chat button کو Chat Room کھولنے سے جوڑیں */
+document.addEventListener("DOMContentLoaded", function() {
+
+    const chatButtons = document.querySelectorAll(
+        '[data-page="chat"], .chat, #chatBtn'
+    );
+
+    chatButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            openChatRoom();
+        });
+    });
+
+});
 
 </body>
 </html>
