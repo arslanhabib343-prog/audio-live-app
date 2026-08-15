@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audio Live</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#090712;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+.header{
+  padding:22px 18px 14px;
+  font-size:25px;
+  font-weight:bold;
+}
+.tabs{
+  display:flex;
+  gap:25px;
+  padding:0 18px 15px;
+  border-bottom:1px solid #30283e;
+}
+.tabs span:first-child{
+  color:#ff35d0;
+  border-bottom:2px solid #ff35d0;
+  padding-bottom:10px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:15px;
+}
+.card{
+  height:245px;
+  border-radius:18px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:linear-gradient(160deg,#54206f,#151020);
+  box-shadow:0 5px 20px #0008;
+}
+.live{
+  align-self:flex-start;
+  background:#ff168e;
+  padding:5px 9px;
+  border-radius:8px;
+  font-size:12px;
+}
+.name{
+  font-size:18px;
+  font-weight:bold;
+  margin-top:auto;
+}
+.view{
+  color:#ddd;
+  font-size:13px;
+}
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:72px;
+  background:#151020;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid #332a42;
+}
+.bottom div{
+  text-align:center;
+  font-size:12px;
+}
+.plus{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#8d20ff,#ff20c8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🎧 Audio Live</div>
+
+<div class="tabs">
+  <span>Popular</span>
+  <span>Following</span>
+  <span>New</span>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <span class="live">LIVE</span>
+    <div class="name">Sana</div>
+    <div class="view">❤️ 126.8K viewers</div>
+  </div>
+
+  <div class="card">
+    <span class="live">LIVE</span>
+    <div class="name">Zara</div>
+    <div class="view">❤️ 98.7K viewers</div>
+  </div>
+
+  <div class="card">
+    <span class="live">LIVE</span>
+    <div class="name">Hamza</div>
+    <div class="view">❤️ 76.5K viewers</div>
+  </div>
+
+  <div class="card">
+    <span class="live">LIVE</span>
+    <div class="name">Noor</div>
+    <div class="view">❤️ 53.4K viewers</div>
+  </div>
+
+</div>
+
+<div class="bottom">
+  <div>🏠<br>Home</div>
+  <div>📹<br>Live</div>
+  <div class="plus">+</div>
+  <div>💬<br>Chat</div>
+  <div>👤<br>Me</div>
+</div>
+
+</body>
+</html>
