@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,176 +9,298 @@
 *{box-sizing:border-box}
 body{
   margin:0;
-  background:#090712;
-  color:white;
+  background:#080b14;
+  color:#fff;
   font-family:Arial,sans-serif;
 }
+.app{
+  max-width:480px;
+  min-height:100vh;
+  margin:auto;
+  background:#0d1220;
+  padding-bottom:75px;
+}
 header{
-  padding:22px 18px 14px;
-  font-size:25px;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#101625;
+}
+.logo{
+  font-size:24px;
   font-weight:bold;
 }
-.logo{font-size:30px}
 .logo span{color:#b52cff}
-
-.tabs{
-  display:flex;
-  gap:28px;
-  padding:12px 18px 18px;
-  border-bottom:1px solid #292033;
+.coins{
+  background:#191f31;
+  padding:9px 14px;
+  border-radius:20px;
+  color:#ffd34e;
 }
-.tab{font-size:18px;color:#ddd}
-.active{color:#ff22b8;border-bottom:3px solid #ff22b8;padding-bottom:10px}
-
-.grid{
+.banner{
+  margin:15px;
+  padding:20px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#712cff,#bd27d9);
+}
+.banner h2{margin:0 0 8px}
+.banner p{margin:0;color:#eee}
+.title{
+  padding:10px 18px;
+  font-size:20px;
+  font-weight:bold;
+}
+.rooms{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
-  padding:20px 14px 100px;
+  gap:12px;
+  padding:0 15px;
 }
-.card{
-  height:235px;
-  border-radius:24px;
-  padding:14px;
+.room{
+  background:#171d2d;
+  border-radius:18px;
+  padding:15px;
+  text-align:center;
+}
+.avatar{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  margin:auto;
   display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  background:linear-gradient(145deg,#552078,#21152f);
-  border:1px solid #6d347e;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  background:linear-gradient(135deg,#ff4fa3,#653cff);
 }
+.room h3{margin:10px 0 5px}
 .live{
-  background:#ff159b;
-  width:max-content;
-  padding:8px 13px;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:bold;
+  color:#ff4f7b;
+  font-size:13px;
 }
-.name{
-  font-size:22px;
-  font-weight:bold;
+button{
+  border:0;
+  color:white;
+  cursor:pointer;
 }
-.viewers{
-  color:#ddd;
-  font-size:16px;
-  margin-top:5px;
+.join{
+  margin-top:10px;
+  padding:9px 18px;
+  border-radius:20px;
+  background:#8d38ff;
 }
+.games{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:0 15px 10px;
+}
+.game{
+  min-width:110px;
+  padding:18px 10px;
+  text-align:center;
+  background:#171d2d;
+  border-radius:15px;
+}
+.game-icon{font-size:30px}
 .bottom{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  height:78px;
-  background:#100b19;
-  border-top:1px solid #30223b;
+  max-width:480px;
+  margin:auto;
+  height:68px;
+  background:#111726;
   display:flex;
   justify-content:space-around;
   align-items:center;
+  border-top:1px solid #252b3c;
 }
 .nav{
   text-align:center;
-  color:#ddd;
-  font-size:14px;
+  color:#8790a8;
+  font-size:12px;
 }
 .nav span{
   display:block;
-  font-size:24px;
+  font-size:22px;
+  margin-bottom:3px;
 }
-.plus{
-  width:66px;
-  height:66px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#8e22ff,#ff18b8);
-  display:flex;
-  align-items:center;
+.nav.active{color:#b52cff}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  align-items:flex-end;
   justify-content:center;
-  font-size:30px;
 }
-button{
-  border:0;
-  color:white;
-  background:#a528ff;
-  padding:14px 25px;
-  border-radius:14px;
-  font-size:17px;
-  font-weight:bold;
+.modal-box{
+  width:min(480px,100%);
+  background:#151b2a;
+  border-radius:25px 25px 0 0;
+  padding:25px;
+  text-align:center;
+}
+.close{
+  background:#292f40;
+  padding:10px 20px;
+  border-radius:20px;
+  margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="app">
+
 <header>
-  <div class="logo">🎧 Audio <span>Live</span></div>
+  <div class="logo">Audio <span>Live</span></div>
+  <div class="coins">🪙 2,500</div>
 </header>
 
-<div class="tabs">
-  <div class="tab active">Popular</div>
-  <div class="tab">Following</div>
-  <div class="tab">New</div>
+<div class="banner">
+  <h2>🎙️ ابھی Live جائیں!</h2>
+  <p>دوستوں کے ساتھ بات کریں، گیمز کھیلیں اور گفٹس حاصل کریں۔</p>
 </div>
 
-<div class="grid">
+<div class="title">🔥 Live Rooms</div>
 
-  <div class="card">
-    <div class="live">LIVE</div>
-    <div>
-      <div class="name">Sana</div>
-      <div class="viewers">❤️ 126.8K viewers</div>
-    </div>
+<div class="rooms">
+
+  <div class="room">
+    <div class="avatar">🎤</div>
+    <h3>Music Room</h3>
+    <div class="live">● LIVE · 128</div>
+    <button class="join" onclick="joinRoom('Music Room')">Join</button>
   </div>
 
-  <div class="card">
-    <div class="live">LIVE</div>
-    <div>
-      <div class="name">Zara</div>
-      <div class="viewers">❤️ 98.7K viewers</div>
-    </div>
+  <div class="room">
+    <div class="avatar">🎮</div>
+    <h3>Game Room</h3>
+    <div class="live">● LIVE · 96</div>
+    <button class="join" onclick="joinRoom('Game Room')">Join</button>
   </div>
 
-  <div class="card">
-    <div class="live">LIVE</div>
-    <div>
-      <div class="name">Hamza</div>
-      <div class="viewers">❤️ 76.5K viewers</div>
-    </div>
+  <div class="room">
+    <div class="avatar">💬</div>
+    <h3>Chat Room</h3>
+    <div class="live">● LIVE · 74</div>
+    <button class="join" onclick="joinRoom('Chat Room')">Join</button>
   </div>
 
-  <div class="card">
-    <div class="live">LIVE</div>
-    <div>
-      <div class="name">Noor</div>
-      <div class="viewers">❤️ 53.4K viewers</div>
-    </div>
+  <div class="room">
+    <div class="avatar">❤️</div>
+    <h3>Friends</h3>
+    <div class="live">● LIVE · 52</div>
+    <button class="join" onclick="joinRoom('Friends Room')">Join</button>
   </div>
 
+</div>
+
+<div class="title">🎮 Games</div>
+
+<div class="games">
+  <div class="game" onclick="game('Ludo')">
+    <div class="game-icon">🎲</div>
+    <b>Ludo</b>
+  </div>
+
+  <div class="game" onclick="game('Car Race')">
+    <div class="game-icon">🏎️</div>
+    <b>Race</b>
+  </div>
+
+  <div class="game" onclick="game('Cards')">
+    <div class="game-icon">🃏</div>
+    <b>Cards</b>
+  </div>
+
+  <div class="game" onclick="game('Puzzle')">
+    <div class="game-icon">🧩</div>
+    <b>Puzzle</b>
+  </div>
+</div>
+
+<div class="title">🎁 Gifts</div>
+
+<div class="games">
+  <div class="game" onclick="gift('Rose')">🌹<br>Rose</div>
+  <div class="game" onclick="gift('Heart')">❤️<br>Heart</div>
+  <div class="game" onclick="gift('Crown')">👑<br>Crown</div>
+  <div class="game" onclick="gift('Diamond')">💎<br>Diamond</div>
 </div>
 
 <div class="bottom">
 
-  <div class="nav">
+  <div class="nav active" onclick="home()">
     <span>🏠</span>
     Home
   </div>
 
-  <div class="nav">
+  <div class="nav" onclick="showMessage('Live')">
     <span>📺</span>
     Live
   </div>
 
-  <div class="plus">+</div>
-
-  <div class="nav">
+  <div class="nav" onclick="showMessage('Messages')">
     <span>💬</span>
     Chat
   </div>
 
-  <div class="nav">
+  <div class="nav" onclick="showMessage('Profile')">
     <span>👤</span>
-    Me
+    Profile
   </div>
 
 </div>
+
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h2 id="modalTitle">Audio Live</h2>
+    <p id="modalText"></p>
+    <button class="close" onclick="closeModal()">بند کریں</button>
+  </div>
+</div>
+
+<script>
+
+function openModal(title,text){
+  document.getElementById("modalTitle").innerText=title;
+  document.getElementById("modalText").innerText=text;
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+function joinRoom(room){
+  openModal("🎙️ "+room,"آپ اس Live Room میں شامل ہو گئے ہیں۔");
+}
+
+function game(name){
+  openModal("🎮 "+name,"گیم جلد شروع ہوگی۔");
+}
+
+function gift(name){
+  openModal("🎁 "+name,"آپ نے "+name+" گفٹ منتخب کیا ہے۔");
+}
+
+function showMessage(name){
+  openModal(name,"یہ سیکشن Audio Live ایپ میں فعال ہے۔");
+}
+
+function home(){
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+</script>
 
 </body>
 </html>
