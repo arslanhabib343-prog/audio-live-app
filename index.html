@@ -13,127 +13,171 @@ body{
   color:white;
   font-family:Arial,sans-serif;
 }
-.header{
+header{
   padding:22px 18px 14px;
   font-size:25px;
   font-weight:bold;
 }
+.logo{font-size:30px}
+.logo span{color:#b52cff}
+
 .tabs{
   display:flex;
-  gap:25px;
-  padding:0 18px 15px;
-  border-bottom:1px solid #30283e;
+  gap:28px;
+  padding:12px 18px 18px;
+  border-bottom:1px solid #292033;
 }
-.tabs span:first-child{
-  color:#ff35d0;
-  border-bottom:2px solid #ff35d0;
-  padding-bottom:10px;
-}
+.tab{font-size:18px;color:#ddd}
+.active{color:#ff22b8;border-bottom:3px solid #ff22b8;padding-bottom:10px}
+
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
-  padding:15px;
+  gap:14px;
+  padding:20px 14px 100px;
 }
 .card{
-  height:245px;
-  border-radius:18px;
-  padding:12px;
+  height:235px;
+  border-radius:24px;
+  padding:14px;
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
-  background:linear-gradient(160deg,#54206f,#151020);
-  box-shadow:0 5px 20px #0008;
+  justify-content:space-between;
+  background:linear-gradient(145deg,#552078,#21152f);
+  border:1px solid #6d347e;
 }
 .live{
-  align-self:flex-start;
-  background:#ff168e;
-  padding:5px 9px;
-  border-radius:8px;
-  font-size:12px;
+  background:#ff159b;
+  width:max-content;
+  padding:8px 13px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:bold;
 }
 .name{
-  font-size:18px;
+  font-size:22px;
   font-weight:bold;
-  margin-top:auto;
 }
-.view{
+.viewers{
   color:#ddd;
-  font-size:13px;
+  font-size:16px;
+  margin-top:5px;
 }
 .bottom{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  height:72px;
-  background:#151020;
+  height:78px;
+  background:#100b19;
+  border-top:1px solid #30223b;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  border-top:1px solid #332a42;
 }
-.bottom div{
+.nav{
   text-align:center;
-  font-size:12px;
+  color:#ddd;
+  font-size:14px;
+}
+.nav span{
+  display:block;
+  font-size:24px;
 }
 .plus{
-  width:52px;
-  height:52px;
+  width:66px;
+  height:66px;
   border-radius:50%;
-  background:linear-gradient(135deg,#8d20ff,#ff20c8);
+  background:linear-gradient(135deg,#8e22ff,#ff18b8);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:30px;
+}
+button{
+  border:0;
+  color:white;
+  background:#a528ff;
+  padding:14px 25px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">🎧 Audio Live</div>
+<header>
+  <div class="logo">🎧 Audio <span>Live</span></div>
+</header>
 
 <div class="tabs">
-  <span>Popular</span>
-  <span>Following</span>
-  <span>New</span>
+  <div class="tab active">Popular</div>
+  <div class="tab">Following</div>
+  <div class="tab">New</div>
 </div>
 
 <div class="grid">
 
   <div class="card">
-    <span class="live">LIVE</span>
-    <div class="name">Sana</div>
-    <div class="view">❤️ 126.8K viewers</div>
+    <div class="live">LIVE</div>
+    <div>
+      <div class="name">Sana</div>
+      <div class="viewers">❤️ 126.8K viewers</div>
+    </div>
   </div>
 
   <div class="card">
-    <span class="live">LIVE</span>
-    <div class="name">Zara</div>
-    <div class="view">❤️ 98.7K viewers</div>
+    <div class="live">LIVE</div>
+    <div>
+      <div class="name">Zara</div>
+      <div class="viewers">❤️ 98.7K viewers</div>
+    </div>
   </div>
 
   <div class="card">
-    <span class="live">LIVE</span>
-    <div class="name">Hamza</div>
-    <div class="view">❤️ 76.5K viewers</div>
+    <div class="live">LIVE</div>
+    <div>
+      <div class="name">Hamza</div>
+      <div class="viewers">❤️ 76.5K viewers</div>
+    </div>
   </div>
 
   <div class="card">
-    <span class="live">LIVE</span>
-    <div class="name">Noor</div>
-    <div class="view">❤️ 53.4K viewers</div>
+    <div class="live">LIVE</div>
+    <div>
+      <div class="name">Noor</div>
+      <div class="viewers">❤️ 53.4K viewers</div>
+    </div>
   </div>
 
 </div>
 
 <div class="bottom">
-  <div>🏠<br>Home</div>
-  <div>📹<br>Live</div>
+
+  <div class="nav">
+    <span>🏠</span>
+    Home
+  </div>
+
+  <div class="nav">
+    <span>📺</span>
+    Live
+  </div>
+
   <div class="plus">+</div>
-  <div>💬<br>Chat</div>
-  <div>👤<br>Me</div>
+
+  <div class="nav">
+    <span>💬</span>
+    Chat
+  </div>
+
+  <div class="nav">
+    <span>👤</span>
+    Me
+  </div>
+
 </div>
 
 </body>
