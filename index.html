@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,297 +7,344 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
-  background:#080b14;
-  color:#fff;
+  background:#090712;
+  color:white;
   font-family:Arial,sans-serif;
 }
-.app{
-  max-width:480px;
-  min-height:100vh;
-  margin:auto;
-  background:#0d1220;
-  padding-bottom:75px;
-}
+
 header{
-  padding:18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#101625;
-}
-.logo{
-  font-size:24px;
+  padding:22px 18px 14px;
+  font-size:30px;
   font-weight:bold;
 }
+
 .logo span{color:#b52cff}
-.coins{
-  background:#191f31;
-  padding:9px 14px;
-  border-radius:20px;
-  color:#ffd34e;
+
+.tabs{
+  display:flex;
+  gap:28px;
+  padding:12px 18px 18px;
+  border-bottom:1px solid #292033;
 }
-.banner{
-  margin:15px;
-  padding:20px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#712cff,#bd27d9);
+
+.tab{
+  font-size:18px;
+  color:#ddd;
 }
-.banner h2{margin:0 0 8px}
-.banner p{margin:0;color:#eee}
-.title{
-  padding:10px 18px;
-  font-size:20px;
-  font-weight:bold;
+
+.active{
+  color:#ff22b8;
+  border-bottom:3px solid #ff22b8;
+  padding-bottom:10px;
 }
-.rooms{
+
+.grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
-  padding:0 15px;
+  gap:14px;
+  padding:18px;
 }
+
 .room{
-  background:#171d2d;
-  border-radius:18px;
-  padding:15px;
+  background:#171b2b;
+  border-radius:25px;
+  padding:20px 12px;
   text-align:center;
+  min-height:280px;
 }
-.avatar{
-  width:65px;
-  height:65px;
-  border-radius:50%;
+
+.room-icon{
+  width:120px;
+  height:120px;
   margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff35a8,#7b2cff);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
-  background:linear-gradient(135deg,#ff4fa3,#653cff);
+  font-size:55px;
 }
-.room h3{margin:10px 0 5px}
-.live{
-  color:#ff4f7b;
-  font-size:13px;
+
+.room h2{
+  margin:18px 0 10px;
 }
+
+.live-count{
+  color:#ff4f9a;
+  margin-bottom:15px;
+}
+
 button{
   border:0;
+  background:linear-gradient(135deg,#8d32ff,#e000d8);
   color:white;
-  cursor:pointer;
+  border-radius:30px;
+  padding:13px 25px;
+  font-size:17px;
 }
-.join{
-  margin-top:10px;
-  padding:9px 18px;
-  border-radius:20px;
-  background:#8d38ff;
-}
-.games{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  padding:0 15px 10px;
-}
-.game{
-  min-width:110px;
-  padding:18px 10px;
-  text-align:center;
-  background:#171d2d;
-  border-radius:15px;
-}
-.game-icon{font-size:30px}
+
 .bottom{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  max-width:480px;
-  margin:auto;
-  height:68px;
-  background:#111726;
+  height:90px;
+  background:#101524;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  border-top:1px solid #252b3c;
 }
+
 .nav{
   text-align:center;
-  color:#8790a8;
-  font-size:12px;
+  font-size:14px;
 }
+
 .nav span{
   display:block;
-  font-size:22px;
-  margin-bottom:3px;
+  font-size:30px;
 }
-.nav.active{color:#b52cff}
-.modal{
+
+.plus{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#8d32ff,#e000d8);
+  font-size:35px;
+}
+
+/* LIVE SCREEN */
+
+#liveScreen{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
-  align-items:flex-end;
-  justify-content:center;
+  background:#05050a;
+  z-index:99;
 }
-.modal-box{
-  width:min(480px,100%);
-  background:#151b2a;
-  border-radius:25px 25px 0 0;
-  padding:25px;
-  text-align:center;
+
+#camera{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  background:#111;
 }
-.close{
-  background:#292f40;
-  padding:10px 20px;
+
+.liveTop{
+  position:absolute;
+  top:20px;
+  left:20px;
+  right:20px;
+  display:flex;
+  justify-content:space-between;
+  z-index:2;
+}
+
+.liveBadge{
+  background:#ff1493;
+  padding:10px 18px;
   border-radius:20px;
-  margin-top:15px;
+  font-weight:bold;
+}
+
+.closeBtn{
+  background:rgba(0,0,0,.6);
+  width:45px;
+  height:45px;
+  padding:0;
+}
+
+.liveControls{
+  position:absolute;
+  bottom:35px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+.control{
+  width:55px;
+  height:55px;
+  padding:0;
+  background:rgba(0,0,0,.65);
+  font-size:24px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <header>
-  <div class="logo">Audio <span>Live</span></div>
-  <div class="coins">🪙 2,500</div>
+  🎧 <span class="logo">Audio <span>Live</span></span>
 </header>
 
-<div class="banner">
-  <h2>🎙️ ابھی Live جائیں!</h2>
-  <p>دوستوں کے ساتھ بات کریں، گیمز کھیلیں اور گفٹس حاصل کریں۔</p>
+<div class="tabs">
+  <div class="tab active">Popular</div>
+  <div class="tab">Following</div>
+  <div class="tab">New</div>
 </div>
 
-<div class="title">🔥 Live Rooms</div>
-
-<div class="rooms">
+<div class="grid">
 
   <div class="room">
-    <div class="avatar">🎤</div>
-    <h3>Music Room</h3>
-    <div class="live">● LIVE · 128</div>
-    <button class="join" onclick="joinRoom('Music Room')">Join</button>
+    <div class="room-icon">🎮</div>
+    <h2>Game Room</h2>
+    <div class="live-count">LIVE · 96 ●</div>
+    <button onclick="startLive()">Join</button>
   </div>
 
   <div class="room">
-    <div class="avatar">🎮</div>
-    <h3>Game Room</h3>
-    <div class="live">● LIVE · 96</div>
-    <button class="join" onclick="joinRoom('Game Room')">Join</button>
+    <div class="room-icon">🎤</div>
+    <h2>Music Room</h2>
+    <div class="live-count">LIVE · 128 ●</div>
+    <button onclick="startLive()">Join</button>
   </div>
 
   <div class="room">
-    <div class="avatar">💬</div>
-    <h3>Chat Room</h3>
-    <div class="live">● LIVE · 74</div>
-    <button class="join" onclick="joinRoom('Chat Room')">Join</button>
+    <div class="room-icon">❤️</div>
+    <h2>Friends</h2>
+    <div class="live-count">LIVE · 52 ●</div>
+    <button onclick="startLive()">Join</button>
   </div>
 
   <div class="room">
-    <div class="avatar">❤️</div>
-    <h3>Friends</h3>
-    <div class="live">● LIVE · 52</div>
-    <button class="join" onclick="joinRoom('Friends Room')">Join</button>
+    <div class="room-icon">💬</div>
+    <h2>Chat Room</h2>
+    <div class="live-count">LIVE · 74 ●</div>
+    <button onclick="startLive()">Join</button>
   </div>
 
-</div>
-
-<div class="title">🎮 Games</div>
-
-<div class="games">
-  <div class="game" onclick="game('Ludo')">
-    <div class="game-icon">🎲</div>
-    <b>Ludo</b>
-  </div>
-
-  <div class="game" onclick="game('Car Race')">
-    <div class="game-icon">🏎️</div>
-    <b>Race</b>
-  </div>
-
-  <div class="game" onclick="game('Cards')">
-    <div class="game-icon">🃏</div>
-    <b>Cards</b>
-  </div>
-
-  <div class="game" onclick="game('Puzzle')">
-    <div class="game-icon">🧩</div>
-    <b>Puzzle</b>
-  </div>
-</div>
-
-<div class="title">🎁 Gifts</div>
-
-<div class="games">
-  <div class="game" onclick="gift('Rose')">🌹<br>Rose</div>
-  <div class="game" onclick="gift('Heart')">❤️<br>Heart</div>
-  <div class="game" onclick="gift('Crown')">👑<br>Crown</div>
-  <div class="game" onclick="gift('Diamond')">💎<br>Diamond</div>
 </div>
 
 <div class="bottom">
 
-  <div class="nav active" onclick="home()">
-    <span>🏠</span>
-    Home
-  </div>
-
-  <div class="nav" onclick="showMessage('Live')">
-    <span>📺</span>
-    Live
-  </div>
-
-  <div class="nav" onclick="showMessage('Messages')">
-    <span>💬</span>
-    Chat
-  </div>
-
-  <div class="nav" onclick="showMessage('Profile')">
+  <div class="nav">
     <span>👤</span>
     Profile
   </div>
 
-</div>
-
-</div>
-
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <h2 id="modalTitle">Audio Live</h2>
-    <p id="modalText"></p>
-    <button class="close" onclick="closeModal()">بند کریں</button>
+  <div class="nav">
+    <span>💬</span>
+    Chat
   </div>
+
+  <div class="plus" onclick="startLive()">+</div>
+
+  <div class="nav">
+    <span>📺</span>
+    Live
+  </div>
+
+  <div class="nav">
+    <span>🏠</span>
+    Home
+  </div>
+
 </div>
+
+
+<!-- LIVE CAMERA SCREEN -->
+
+<div id="liveScreen">
+
+  <video id="camera" autoplay playsinline muted></video>
+
+  <div class="liveTop">
+    <div class="liveBadge">🔴 LIVE</div>
+    <button class="closeBtn" onclick="stopLive()">✕</button>
+  </div>
+
+  <div class="liveControls">
+    <button class="control" onclick="toggleMic()" id="micBtn">🎤</button>
+    <button class="control" onclick="toggleCamera()" id="camBtn">📷</button>
+  </div>
+
+</div>
+
 
 <script>
 
-function openModal(title,text){
-  document.getElementById("modalTitle").innerText=title;
-  document.getElementById("modalText").innerText=text;
-  document.getElementById("modal").style.display="flex";
+let stream = null;
+let micOn = true;
+let cameraOn = true;
+
+async function startLive(){
+
+  try{
+
+    stream = await navigator.mediaDevices.getUserMedia({
+      video:true,
+      audio:true
+    });
+
+    document.getElementById("camera").srcObject = stream;
+    document.getElementById("liveScreen").style.display = "block";
+
+  }catch(error){
+
+    alert(
+      "Camera اور Microphone کی اجازت ضروری ہے۔\n\n" +
+      "براہِ کرم Allow دبائیں۔"
+    );
+
+    console.log(error);
+  }
 }
 
-function closeModal(){
-  document.getElementById("modal").style.display="none";
+
+function stopLive(){
+
+  if(stream){
+
+    stream.getTracks().forEach(track => {
+      track.stop();
+    });
+
+    stream = null;
+  }
+
+  document.getElementById("camera").srcObject = null;
+  document.getElementById("liveScreen").style.display = "none";
 }
 
-function joinRoom(room){
-  openModal("🎙️ "+room,"آپ اس Live Room میں شامل ہو گئے ہیں۔");
+
+function toggleMic(){
+
+  if(!stream) return;
+
+  const audioTracks = stream.getAudioTracks();
+
+  audioTracks.forEach(track => {
+    track.enabled = !track.enabled;
+    micOn = track.enabled;
+  });
+
+  document.getElementById("micBtn").textContent =
+    micOn ? "🎤" : "🔇";
 }
 
-function game(name){
-  openModal("🎮 "+name,"گیم جلد شروع ہوگی۔");
-}
 
-function gift(name){
-  openModal("🎁 "+name,"آپ نے "+name+" گفٹ منتخب کیا ہے۔");
-}
+function toggleCamera(){
 
-function showMessage(name){
-  openModal(name,"یہ سیکشن Audio Live ایپ میں فعال ہے۔");
-}
+  if(!stream) return;
 
-function home(){
-  window.scrollTo({top:0,behavior:"smooth"});
+  const videoTracks = stream.getVideoTracks();
+
+  videoTracks.forEach(track => {
+    track.enabled = !track.enabled;
+    cameraOn = track.enabled;
+  });
+
+  document.getElementById("camBtn").textContent =
+    cameraOn ? "📷" : "🚫";
 }
 
 </script>
