@@ -1,3 +1,5 @@
+Audio Live — مکمل "index.html"
+
 <!DOCTYPE html>
 <html lang="ur">
 <head>
@@ -26,53 +28,57 @@ header span{color:#c20cff}
 
 .tabs{
   display:flex;
-  gap:55px;
-  padding:22px 34px;
-  font-size:24px;
+  gap:35px;
+  padding:22px 25px;
+  font-size:22px;
   border-bottom:1px solid #292733;
+}
+
+.tab{
+  cursor:pointer;
 }
 
 .tab.active{
   color:#ff1bbd;
-  border-bottom:5px solid #ff1bbd;
-  padding-bottom:20px;
+  border-bottom:4px solid #ff1bbd;
+  padding-bottom:15px;
 }
 
 .rooms{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
-  padding:34px;
+  padding:25px;
 }
 
 .room{
   background:#171a2b;
-  border-radius:38px;
-  padding:28px 18px 38px;
+  border-radius:30px;
+  padding:22px 12px 30px;
   text-align:center;
 }
 
 .icon{
-  width:190px;
-  height:190px;
+  width:140px;
+  height:140px;
   margin:auto;
   border-radius:50%;
   background:linear-gradient(135deg,#ef1a9e,#8e20ff);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:90px;
+  font-size:65px;
 }
 
 .room h2{
-  font-size:30px;
-  margin:30px 0 20px;
+  font-size:25px;
+  margin:20px 0 14px;
 }
 
 .live{
   color:#ff45a9;
-  font-size:20px;
-  margin-bottom:28px;
+  font-size:18px;
+  margin-bottom:20px;
 }
 
 .join{
@@ -80,42 +86,8 @@ header span{color:#c20cff}
   color:white;
   background:linear-gradient(90deg,#a51cff,#d20ee5);
   border-radius:35px;
-  padding:17px 45px;
-  font-size:20px;
-}
-
-.bottom{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:90px;
-  background:#111523;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  z-index:10;
-}
-
-.nav{
-  text-align:center;
-  font-size:15px;
-}
-
-.nav-icon{
-  font-size:30px;
-  display:block;
-}
-
-.plus{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#a900ff,#d815df);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:45px;
+  padding:13px 35px;
+  font-size:18px;
 }
 
 .livebox{
@@ -144,6 +116,133 @@ video{
   color:white;
   font-size:17px;
 }
+
+.chatPage{
+  display:none;
+  padding:20px;
+}
+
+.chatContainer{
+  background:#111322;
+  border-radius:25px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(200,0,255,.25);
+}
+
+.chatTitle{
+  text-align:center;
+  font-size:28px;
+  margin:5px 0 18px;
+}
+
+.chatMessages{
+  height:350px;
+  overflow-y:auto;
+  background:#080711;
+  border-radius:18px;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+.chatInputRow{
+  display:flex;
+  gap:8px;
+}
+
+.chatInput{
+  flex:1;
+  min-width:0;
+  padding:15px;
+  border:0;
+  outline:0;
+  border-radius:25px;
+  background:#202337;
+  color:white;
+  font-size:16px;
+}
+
+.sendBtn{
+  border:0;
+  border-radius:25px;
+  padding:0 20px;
+  background:linear-gradient(90deg,#b000ff,#ff00a8);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.clearBtn{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:0;
+  border-radius:20px;
+  background:#292c3d;
+  color:white;
+  font-size:15px;
+}
+
+.message{
+  background:#191b2c;
+  padding:10px 12px;
+  margin-bottom:8px;
+  border-radius:15px;
+  word-break:break-word;
+  text-align:left;
+}
+
+.messageUser{
+  color:#e100ff;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.messageText{
+  color:white;
+}
+
+.messageTime{
+  color:#888;
+  display:block;
+  text-align:right;
+  margin-top:4px;
+  font-size:12px;
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:90px;
+  background:#111523;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:10;
+}
+
+.nav{
+  text-align:center;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.nav-icon{
+  font-size:28px;
+  display:block;
+}
+
+.plus{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#a900ff,#d815df);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+}
 </style>
 </head>
 
@@ -157,327 +256,441 @@ video{
   <div class="tab">New</div>
 </div>
 
-<div class="rooms">
+<!-- ROOMS -->
+
+<div class="rooms" id="rooms">
 
   <div class="room">
     <div class="icon">🎮</div>
     <h2>Game<br>Room</h2>
     <div class="live">● LIVE · 96</div>
-    <button class="join" onclick="joinRoom('Game Room')">Join</button>
+    <button class="join" onclick="joinRoom('Game Room')">
+      Join
+    </button>
   </div>
 
   <div class="room">
     <div class="icon">🎤</div>
     <h2>Music<br>Room</h2>
     <div class="live">● LIVE · 128</div>
-    <button class="join" onclick="joinRoom('Music Room')">Join</button>
+    <button class="join" onclick="joinRoom('Music Room')">
+      Join
+    </button>
   </div>
 
   <div class="room">
     <div class="icon">❤️</div>
     <h2>Love<br>Room</h2>
     <div class="live">● LIVE · 74</div>
-    <button class="join" onclick="joinRoom('Love Room')">Join</button>
+    <button class="join" onclick="joinRoom('Love Room')">
+      Join
+    </button>
   </div>
 
   <div class="room">
     <div class="icon">💬</div>
     <h2>Chat<br>Room</h2>
     <div class="live">● LIVE · 112</div>
-    <button class="join" onclick="joinRoom('Chat Room')">Join</button>
+    <button class="join" onclick="openChatRoom()">
+      Join
+    </button>
   </div>
 
 </div>
 
+
+<!-- LIVE ROOM -->
+
 <div class="livebox" id="liveBox">
+
   <h2 id="roomTitle">Live Room</h2>
 
   <video id="video" autoplay playsinline></video>
 
   <div class="controls">
-    <button onclick="toggleMic()" id="micBtn">🎤 Mic</button>
-    <button onclick="toggleCamera()" id="camBtn">📷 Camera</button>
-    <button onclick="leaveRoom()">❌ Leave</button>
+
+    <button onclick="toggleMic()" id="micBtn">
+      🎤 Mic ON
+    </button>
+
+    <button onclick="toggleCamera()" id="camBtn">
+      📷 Camera ON
+    </button>
+
+    <button onclick="leaveRoom()">
+      ❌ Leave
+    </button>
+
   </div>
+
 </div>
+
+
+<!-- CHAT ROOM -->
+
+<div class="chatPage" id="chatPage">
+
+  <div class="chatContainer">
+
+    <h2 class="chatTitle">
+      💬 Chat Room
+    </h2>
+
+    <div class="chatMessages" id="chatMessages"></div>
+
+    <div class="chatInputRow">
+
+      <input
+        id="chatInput"
+        class="chatInput"
+        type="text"
+        placeholder="Type a message..."
+      >
+
+      <button
+        class="sendBtn"
+        onclick="sendChatMessage()">
+        Send
+      </button>
+
+    </div>
+
+    <button
+      class="clearBtn"
+      onclick="clearChatMessages()">
+      🗑 Clear Chat
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
 
 <div class="bottom">
 
-  <div class="nav">
+  <div class="nav" onclick="showHome()">
     <span class="nav-icon">👤</span>
     Profile
   </div>
 
-  <div class="nav">
+  <div class="nav" onclick="openChatRoom()">
     <span class="nav-icon">💬</span>
     Chat
   </div>
 
-  <div class="plus">+</div>
+  <div class="plus">
+    +
+  </div>
 
-  <div class="nav">
+  <div class="nav" onclick="showHome()">
     <span class="nav-icon">📺</span>
     Live
   </div>
 
-  <div class="nav">
+  <div class="nav" onclick="showHome()">
     <span class="nav-icon">🏠</span>
     Home
   </div>
 
 </div>
 
+
 <script>
-let stream=null;
-let micOn=true;
-let cameraOn=true;
+
+let stream = null;
+let micOn = true;
+let cameraOn = true;
+
+let chatMessages = [];
+
+
+/* =========================
+   LIVE ROOM
+========================= */
 
 async function joinRoom(name){
 
-  document.querySelector(".rooms").style.display="none";
-  document.querySelector(".tabs").style.display="none";
+  document.getElementById("rooms").style.display = "none";
+  document.querySelector(".tabs").style.display = "none";
+  document.getElementById("chatPage").style.display = "none";
 
-  const box=document.getElementById("liveBox");
-  box.style.display="block";
-  document.getElementById("roomTitle").innerText=name;
+  const box = document.getElementById("liveBox");
+
+  box.style.display = "block";
+
+  document.getElementById("roomTitle").innerText = name;
 
   try{
-    stream=await navigator.mediaDevices.getUserMedia({
+
+    stream = await navigator.mediaDevices.getUserMedia({
       audio:true,
       video:true
     });
 
-    document.getElementById("video").srcObject=stream;
+    document.getElementById("video").srcObject = stream;
 
   }catch(error){
+
     alert("Camera/Microphone permission دیں۔");
+
   }
 }
 
+
 function toggleMic(){
 
-  if(!stream)return;
+  if(!stream) return;
 
-  stream.getAudioTracks().forEach(track=>{
-    track.enabled=!track.enabled;
-    micOn=track.enabled;
+  stream.getAudioTracks().forEach(track => {
+
+    track.enabled = !track.enabled;
+
+    micOn = track.enabled;
+
   });
 
-  document.getElementById("micBtn").innerText=
+  document.getElementById("micBtn").innerText =
     micOn ? "🎤 Mic ON" : "🔇 Mic OFF";
 }
 
+
 function toggleCamera(){
 
-  if(!stream)return;
+  if(!stream) return;
 
-  stream.getVideoTracks().forEach(track=>{
-    track.enabled=!track.enabled;
-    cameraOn=track.enabled;
+  stream.getVideoTracks().forEach(track => {
+
+    track.enabled = !track.enabled;
+
+    cameraOn = track.enabled;
+
   });
 
-  document.getElementById("camBtn").innerText=
+  document.getElementById("camBtn").innerText =
     cameraOn ? "📷 Camera ON" : "🚫 Camera OFF";
 }
+
 
 function leaveRoom(){
 
   if(stream){
-    stream.getTracks().forEach(track=>track.stop());
-    stream=null;
+
+    stream.getTracks().forEach(track => {
+      track.stop();
+    });
+
+    stream = null;
   }
 
-  document.getElementById("video").srcObject=null;
-  document.getElementById("liveBox").style.display="none";
-  document.querySelector(".rooms").style.display="grid";
-  document.querySelector(".tabs").style.display="flex";
-}
-</script>/* ===== CHAT ROOM ===== */
+  document.getElementById("video").srcObject = null;
 
-let chatMessages = [];
+  document.getElementById("liveBox").style.display = "none";
 
-function openChatRoom() {
-    const room = document.getElementById("liveBox");
-    if (!room) return;
-
-    room.style.display = "block";
-
-    let chatBox = document.getElementById("chatRoomBox");
-
-    if (!chatBox) {
-        chatBox = document.createElement("div");
-        chatBox.id = "chatRoomBox";
-
-        chatBox.innerHTML = `
-            <div style="
-                background:#111322;
-                border-radius:20px;
-                padding:15px;
-                margin:15px 0;
-                box-shadow:0 0 15px rgba(200,0,255,.25);
-            ">
-                <h2 style="text-align:center;margin:5px 0 15px;">
-                    💬 Chat Room
-                </h2>
-
-                <div id="chatMessages" style="
-                    height:300px;
-                    overflow-y:auto;
-                    background:#080711;
-                    border-radius:15px;
-                    padding:12px;
-                    margin-bottom:12px;
-                "></div>
-
-                <div style="
-                    display:flex;
-                    gap:8px;
-                ">
-                    <input id="chatInput"
-                        type="text"
-                        placeholder="Type a message..."
-                        style="
-                            flex:1;
-                            padding:14px;
-                            border:0;
-                            outline:0;
-                            border-radius:25px;
-                            background:#202337;
-                            color:white;
-                            font-size:16px;
-                        ">
-
-                    <button onclick="sendChatMessage()" style="
-                        border:0;
-                        border-radius:25px;
-                        padding:0 20px;
-                        background:linear-gradient(90deg,#b000ff,#ff00a8);
-                        color:white;
-                        font-size:16px;
-                        font-weight:bold;
-                    ">
-                        Send
-                    </button>
-                </div>
-
-                <button onclick="clearChatMessages()" style="
-                    width:100%;
-                    margin-top:10px;
-                    padding:10px;
-                    border:0;
-                    border-radius:20px;
-                    background:#292c3d;
-                    color:white;
-                ">
-                    🗑 Clear Chat
-                </button>
-            </div>
-        `;
-
-        room.appendChild(chatBox);
-
-        document.getElementById("chatInput").addEventListener(
-            "keydown",
-            function(e) {
-                if (e.key === "Enter") {
-                    sendChatMessage();
-                }
-            }
-        );
-    }
+  showHome();
 }
 
-function sendChatMessage() {
-    const input = document.getElementById("chatInput");
-    const messages = document.getElementById("chatMessages");
 
-    if (!input || !messages) return;
+/* =========================
+   CHAT ROOM
+========================= */
 
-    const text = input.value.trim();
+function openChatRoom(){
 
-    if (!text) return;
+  /* Live camera بند */
 
-    const message = {
-        text: text,
-        time: new Date().toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit"
-        })
-    };
+  if(stream){
 
-    chatMessages.push(message);
-
-    const item = document.createElement("div");
-
-    item.style.cssText = `
-        background:#191b2c;
-        padding:10px 12px;
-        margin-bottom:8px;
-        border-radius:15px;
-        word-break:break-word;
-    `;
-
-    item.innerHTML = `
-        <div style="
-            color:#e100ff;
-            font-weight:bold;
-            margin-bottom:3px;
-        ">
-            👤 You
-        </div>
-
-        <div style="color:white;">
-            ${escapeChatText(message.text)}
-        </div>
-
-        <small style="
-            color:#888;
-            display:block;
-            text-align:right;
-            margin-top:4px;
-        ">
-            ${message.time}
-        </small>
-    `;
-
-    messages.appendChild(item);
-
-    messages.scrollTop = messages.scrollHeight;
-
-    input.value = "";
-    input.focus();
-}
-
-function clearChatMessages() {
-    chatMessages = [];
-
-    const messages = document.getElementById("chatMessages");
-
-    if (messages) {
-        messages.innerHTML = "";
-    }
-}
-
-function escapeChatText(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-/* Chat button کو Chat Room کھولنے سے جوڑیں */
-document.addEventListener("DOMContentLoaded", function() {
-
-    const chatButtons = document.querySelectorAll(
-        '[data-page="chat"], .chat, #chatBtn'
-    );
-
-    chatButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
-            openChatRoom();
-        });
+    stream.getTracks().forEach(track => {
+      track.stop();
     });
+
+    stream = null;
+  }
+
+  document.getElementById("video").srcObject = null;
+
+  /* دوسرے صفحات چھپائیں */
+
+  document.getElementById("rooms").style.display = "none";
+
+  document.querySelector(".tabs").style.display = "none";
+
+  document.getElementById("liveBox").style.display = "none";
+
+  /* Chat دکھائیں */
+
+  document.getElementById("chatPage").style.display = "block";
+
+  setTimeout(function(){
+
+    const input = document.getElementById("chatInput");
+
+    if(input){
+      input.focus();
+    }
+
+  },100);
+
+}
+
+
+/* =========================
+   SEND MESSAGE
+========================= */
+
+function sendChatMessage(){
+
+  const input = document.getElementById("chatInput");
+
+  const messages = document.getElementById("chatMessages");
+
+  if(!input || !messages) return;
+
+  const text = input.value.trim();
+
+  if(!text) return;
+
+  const message = {
+
+    text:text,
+
+    time:new Date().toLocaleTimeString([],{
+
+      hour:"2-digit",
+
+      minute:"2-digit"
+
+    })
+
+  };
+
+  chatMessages.push(message);
+
+  const item = document.createElement("div");
+
+  item.className = "message";
+
+  item.innerHTML = `
+
+    <div class="messageUser">
+      👤 You
+    </div>
+
+    <div class="messageText">
+      ${escapeChatText(message.text)}
+    </div>
+
+    <small class="messageTime">
+      ${message.time}
+    </small>
+
+  `;
+
+  messages.appendChild(item);
+
+  messages.scrollTop = messages.scrollHeight;
+
+  input.value = "";
+
+  input.focus();
+
+}
+
+
+/* =========================
+   ENTER TO SEND
+========================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  const input = document.getElementById("chatInput");
+
+  if(input){
+
+    input.addEventListener("keydown",function(e){
+
+      if(e.key === "Enter"){
+
+        e.preventDefault();
+
+        sendChatMessage();
+
+      }
+
+    });
+
+  }
 
 });
 
+
+/* =========================
+   CLEAR CHAT
+========================= */
+
+function clearChatMessages(){
+
+  chatMessages = [];
+
+  const messages =
+    document.getElementById("chatMessages");
+
+  if(messages){
+
+    messages.innerHTML = "";
+
+  }
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeChatText(text){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent = text;
+
+  return div.innerHTML;
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function showHome(){
+
+  document.getElementById("liveBox").style.display = "none";
+
+  document.getElementById("chatPage").style.display = "none";
+
+  document.getElementById("rooms").style.display = "grid";
+
+  document.querySelector(".tabs").style.display = "flex";
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+showHome();
+
+</script>
+
 </body>
 </html>
+
+اب GitHub میں "index.html" کی پوری پرانی فائل کو مکمل طور پر ہٹا کر یہی پورا کوڈ Paste کریں۔
+پھر نیچے Commit changes دبائیں۔
+
+اس ورژن میں Chat Room الگ ہے؛ Chat دبانے سے Camera/Mic نہیں کھلے گا۔
