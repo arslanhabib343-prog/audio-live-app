@@ -543,7 +543,6 @@ function openChatRoom(){
 function sendChatMessage(){
 
   const input = document.getElementById("chatInput");
-
   const messages = document.getElementById("chatMessages");
 
   if(!input || !messages) return;
@@ -552,50 +551,28 @@ function sendChatMessage(){
 
   if(!text) return;
 
-  const message = {
-
-    text:text,
-
-    time:new Date().toLocaleTimeString([],{
-
-      hour:"2-digit",
-
-      minute:"2-digit"
-
-    })
-
-  };
-
-  chatMessages.push(message);
-
   const item = document.createElement("div");
-
   item.className = "message";
 
+  const time = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
   item.innerHTML = `
-
-    <div class="messageUser">
-      👤 You
-    </div>
-
-    <div class="messageText">
-      ${escapeChatText(message.text)}
-    </div>
-
-    <small class="messageTime">
-      ${message.time}
-    </small>
-
+    <div class="messageUser">👤 You</div>
+    <div class="messageText"></div>
+    <small class="messageTime">${time}</small>
   `;
+
+  item.querySelector(".messageText").textContent = text;
 
   messages.appendChild(item);
 
   messages.scrollTop = messages.scrollHeight;
 
   input.value = "";
-
   input.focus();
-
 }
 
 
